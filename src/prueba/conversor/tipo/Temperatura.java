@@ -33,6 +33,7 @@ public class Temperatura extends Conversor {
             }
         });
     }
+    //dependiendo de los index de los comboBox el valor de salida cambia
     public void encontrarMultiplicador(){
         int a = getTipoEntrada().getSelectedIndex();
         int b = getTipoSalida().getSelectedIndex();
@@ -59,9 +60,6 @@ public class Temperatura extends Conversor {
             }
         }
     }
-    @Override
-    public double valorSalida(double a, double multiplicador){
-        return (a * multiplicador) + 32;
-    }
+
 
 }

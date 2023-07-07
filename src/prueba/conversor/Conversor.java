@@ -27,7 +27,6 @@ public class Conversor {
 
     public Conversor(String [] ins,String [] outs,String tipo) {
         this.tipoEntrada = new JComboBox<>(ins);
-
         this.tipoSalida = new JComboBox<>(outs);
         this.aLabel = new JLabel("a");
         aLabel.setHorizontalAlignment(JLabel.CENTER);

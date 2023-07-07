@@ -41,6 +41,7 @@ public class Monedas extends Conversor {
             }
         });
     }
+    // dependiendo de los valores de los comboBox, multiplicador toma el valor requerido
     public double encontrarMultiplicador(){
         a = getTipoEntrada().getSelectedIndex();
         b = getTipoSalida().getSelectedIndex();
@@ -103,6 +104,7 @@ public class Monedas extends Conversor {
         }
         return getMultiplicador();
     }
+
     @Override
     public double valorSalida(double a, double multiplicador){
         return a * multiplicador;
