@@ -16,6 +16,7 @@ public class Conversor {
 
     private JButton convertirButton;
     private JButton volverButton;
+
     private JButton salirButton;
     private JPanel panelInput;
     private JPanel panelOutput;
@@ -77,10 +78,17 @@ public class Conversor {
         return valorEntrada;
     }
 
+    public void setValorEntrada(String valorEntrada) {
+        this.valorEntrada.setText( valorEntrada);
+    }
+
     public double getValorEntradaDouble() {
         return Double.parseDouble(this.valorEntrada.getText());
     }
 
+    public JTextField getValorSalida() {
+        return valorSalida;
+    }
 
     public void setValorSalida(String valorSalida) {
         this.valorSalida.setText( valorSalida);

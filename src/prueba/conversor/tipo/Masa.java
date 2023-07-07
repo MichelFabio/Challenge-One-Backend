@@ -7,9 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Masa extends Conversor {
-    public final String [] ins = {"mg","cg","dg","g","Dg","Hg","Kg"};
+    int a,b;
     public Masa() {
-        super(new String[]{"mg","cg","dg","g","Dg","Hg","Kg"},new String[]{"mg","cg","dg","g","Dg","Hg","Kg"}, "Masa");
+        super(new String[]{"mg","cg","dg","g","Dg","Hg","Kg","libra"},new String[]{"mg","cg","dg","g","Dg","Hg","Kg","libra"}, "Masa");
         getConvertirButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -34,20 +34,45 @@ public class Masa extends Conversor {
         });
     }
     public void encontrarMultiplicador(){
-        int a = getTipoEntrada().getSelectedIndex();
-        int b = getTipoSalida().getSelectedIndex();
-        int c = a -b;
-        int cAbs = Math.abs(c);
-        int d = 1;
-        for(int i = 0; i < cAbs; i++){
-            d *= 10;
-        }
-        if(c < 0){
-            setValorSalida(String.valueOf(getValorEntradaDouble()/d));
-        }else if (c == 0){
+        a = getTipoEntrada().getSelectedIndex();
+        b = getTipoSalida().getSelectedIndex();
+        double c = 0;
+        System.out.println(getTipoEntrada().getItemCount()-1 );
+        if(a == getTipoEntrada().getItemCount()-1 && b == getTipoEntrada().getItemCount()-1){
             setValorSalida(getValorEntrada().getText());
-        }else if(c>0){
-            setValorSalida(String.valueOf(getValorEntradaDouble()*d));
+        }else if(a == getTipoEntrada().getItemCount()-1 ) {
+            double ltoG = getValorEntradaDouble()/0.00220462d;
+            a = 3;
+            setValorEntrada(String.valueOf(ltoG));
+            c = calculo();
+        }else if(b == getTipoSalida().getItemCount()-1){
+            b = 3;
+            c = calculo();
+            c = c * 0.00220462d;
+        }else{
+            c = calculo();
         }
+        setValorSalida(String.valueOf(c));
     }
+        public double calculo(){
+            int c = a-b;
+            int cAbs = Math.abs(c);
+            double val = 0;
+            int d = 1;
+            for(int i = 0; i < cAbs; i++){
+                d *= 10;
+            }
+            if(c < 0){
+                val = getValorEntradaDouble()/d;
+            }else if (c == 0){
+                val = getValorEntradaDouble();
+            }else if(c>0){
+                val = getValorEntradaDouble()*d;
+            }
+            System.out.println(val);
+            return val;
+
+        }
+
 }
+

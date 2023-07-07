@@ -1,5 +1,6 @@
 package prueba.conversor;
 
+import prueba.conversor.tipo.Distancia;
 import prueba.conversor.tipo.Masa;
 import prueba.conversor.tipo.Monedas;
 import prueba.conversor.tipo.Temperatura;
@@ -18,6 +19,7 @@ public class Main{
     private JButton monedaButton;
     private JButton temperaturaButton;
     private JButton masaButton;
+    private JButton distanciaButton;
     JPanel mainPanel;
     Conversor c;
 
@@ -27,6 +29,8 @@ public class Main{
         monedaButton = new JButton("Moneda");
         temperaturaButton = new JButton("Temperatura");
         masaButton = new JButton("Masa");
+        distanciaButton = new JButton("Distancia");
+
 
         //Añadir listeners
 
@@ -54,6 +58,13 @@ public class Main{
                 frame.setVisible(false);
             }
         });
+        distanciaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                c = new Distancia();
+                frame.setVisible(false);
+            }
+        });
 
         //crear paneles
         panelText = new JPanel();
@@ -63,6 +74,7 @@ public class Main{
         panelButton.add(monedaButton);
         panelButton.add(temperaturaButton);
         panelButton.add(masaButton);
+        panelButton.add(distanciaButton);
         panelButton.setBorder(new EmptyBorder(10,25,10,25));
         mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS)); // usa un BoxLayout para apilar los paneles verticalmente
